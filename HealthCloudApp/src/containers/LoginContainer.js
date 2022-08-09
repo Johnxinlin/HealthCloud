@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput, TouchableOpacity, ToastAndroid, Image, ImageBackground } from 'react-native';
 import WelcomeComponent from '../components/WelcomeComponent';
-import { Dimensions } from 'react-native';
 import THButton from '../components/THButton';
 import {Input, Icon} from '@rneui/themed';
 import { pxToDp } from '../utils/stylesKits';
 import validator from '../utils/validator';
 import Toast from 'teaset/components/Toast/Toast';
+import { screenheigth, screenWidth } from '../utils/stylesKits';
 
 /**
  * @name 登陆页面组件
@@ -16,8 +16,7 @@ const LoginContainer = (props) => {
   const [password, setPassword] = useState(''); // 密码
   const [moblieValid, setMobileValid] = useState(true); // 手机格式
   const [passwordValid, setPasswordValid] = useState(true); // 手机格式
-  // const [validCode, setValidCode] = useState('');
-  // const regphone = /^1[0-9]{10}$/; //手机号正则表达式
+
 
   /**
    * @name 登录按键回调函数
@@ -29,6 +28,10 @@ const LoginContainer = (props) => {
     setPassword('');
   };
 
+  /**
+   * @method 电话号码状态改变函数
+   * @param {*} mobile 
+   */
   const mobileNumberChangeText = (mobile) =>{
     setMobile(mobile);
     console.log(mobile);
@@ -50,8 +53,8 @@ const LoginContainer = (props) => {
     
   }
 
-  const passwordSubmitEditing = async() =>{
-    if(validator.validatePhone(password)){
+  const passwordSubmitEditing = () =>{
+    if(validator.validatePassword(password)){
       setPasswordValid(true);
     }else{
       setPasswordValid(false);
@@ -66,8 +69,8 @@ const LoginContainer = (props) => {
   return (
     <View >
       {/* 文本组件 */}
-      <ImageBackground source={require('../img/loginbk.jpg')} 
-      style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height + 50}}>
+      <ImageBackground source={require('../img/blueBg2.jpg')} 
+      style={{width: screenWidth, height: screenheigth}}>
         <View style={{justifyContent:'center', alignContent:'center', width:'100%', height:'100%'}}>
           <WelcomeComponent/>
           <View style={styles.bar}>
@@ -108,7 +111,7 @@ const LoginContainer = (props) => {
             <TouchableOpacity
               style={{...styles.btn_login, width:"80%", height:50}}
               onPress={() => {
-                if (moblieValid & passwordValid) {
+                if ((moblieValid & passwordValid) && mobile != '') {
                   login();
                 }else{
                   Toast.message("请检查用户名及密码是否正确");

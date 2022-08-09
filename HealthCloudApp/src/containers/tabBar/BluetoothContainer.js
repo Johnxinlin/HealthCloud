@@ -5,20 +5,12 @@ import BluetoothConnectComponent from '../../components/BluetoothConnectComponen
 
 
 
-const Tab1Container = (props) => {
+const BluetoothContainer = (props) => {
 
   // navigation = useNavigation() 
 
   return (
     <View >
-      {/**跳转到对应字页面的按钮 */}
-      {/*<Button
-        title={'to Page1'}
-        onPress={() => {
-          //点击按钮后，跳转到Page1页面
-          props.navigation.navigate('page1');
-        }}
-      />*/}
       <ScrollView>
         <BluetoothConnectComponent />
       </ScrollView>
@@ -41,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Tab1Container;
+export default BluetoothContainer;

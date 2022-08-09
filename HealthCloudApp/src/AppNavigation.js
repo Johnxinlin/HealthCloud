@@ -13,7 +13,7 @@ const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='login'
+        initialRouteName='tabs'
         //headerShown指定导航条阴影的显示或隐藏  presentatino指定页面模式
         screenOptions={{headerShown: false, presentation: 'card'}}
       >

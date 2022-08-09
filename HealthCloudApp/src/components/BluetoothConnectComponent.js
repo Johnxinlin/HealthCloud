@@ -128,7 +128,7 @@ const BluetoothConnectComponent = () => {
    * @method 请求用户关闭蓝牙
    */
   const requestDisable = () => {
-    BluetoothSerial.enabled()
+    BluetoothSerial.disable()
     .then(() => {
       dispatch(BluetoothActions.bluetoothConnectState({enabled:false}))
     })

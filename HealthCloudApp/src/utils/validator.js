@@ -11,6 +11,7 @@ export default{
 
     validatePassword(password){
         const reg = /^([0-9 A-z]){0,}$/;
+        console.log(reg.test(password));
         if(reg.test(password)){
             if(password.length >=8 && password.length <= 16){
                 return true;

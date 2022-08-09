@@ -32,9 +32,13 @@ const RegisterContainer = (props) => {
   const [newPasswordValid, setNewPasswordValid] = useState(true); // 手机格式
   const [vCodeTxt, setVCodeTxt] = useState('');
 
+  /**
+   * @method 点击注册事件
+   * @returns 
+   */
   const registerSubmit = async() => {
     // 判断号码及密码是否有正确输入，否则返回
-    if(!(phoneValid & newPasswordValid)){
+    if(!(phoneValid & newPasswordValid ) || phone === ''){
       Toast.message("电话或密码格式错误！");
       return;
     }
@@ -47,6 +51,10 @@ const RegisterContainer = (props) => {
     countDown();
   };
 
+  /**
+   * @method 获取验证码按钮固定时长锁定函数
+   * @returns 
+   */
   const countDown = () =>{
     if(isCountDowning)
       return;
@@ -66,13 +74,21 @@ const RegisterContainer = (props) => {
     }, 1000)
   }
 
+  /**
+   * @method 注册号码状态改变事件
+   * @param {*} phone 
+   */
   const phoneNumberChangeText = (phone) =>{
     setPhone(phone);
     console.log(phone);
   }
 
+  /**
+   * @method 注册号码输入完毕事件
+   * @returns 
+   */
   const phoneSubmitEditing = async() =>{
-
+    // 校验号码正确与否
     if(validator.validatePhone(phone)){
       setPhoneValid(true);
     }else{
@@ -82,11 +98,19 @@ const RegisterContainer = (props) => {
 
   }
 
+  /**
+   * @method 设置密码状态改变事件
+   * @param {*} newPassword 
+   */
   const newPasswordNumberChangeText = (newPassword) =>{
     setNewPassword(newPassword);
     
   }
 
+  /**
+   * @method 密码输入完毕事件
+   * @returns 
+   */
   const newPasswordSubmitEditing = async() =>{
     if(validator.validatePassword(newPassword)){
       setNewPasswordValid(true);
@@ -96,19 +120,28 @@ const RegisterContainer = (props) => {
     }
   }
 
+  /**
+   * @method 重新获取验证码事件
+   */
   const repGetVcode = async() => {
     // const res = await request.post(ACCOUNT_LOGIN,{phone:phoneNumber})
     countDown();
     setVCodeTxt("");
   }
 
-  // 验证码输入框的值改变事件
+  /**
+   * @method 验证码状态改变事件
+   * @param {*} vCodeTxt 
+   */
   const onVcodeChangeText=(vCodeTxt) => {
     setVCodeTxt(vCodeTxt.toString());
     console.log(vCodeTxt);
   }
 
-  // 验证码输入完毕事件
+  /**
+   * @method 验证码输入完毕事件
+   * @returns 
+   */
   const onVcodeSubmitEditing= async()=>{
     /**
      * 1.对验证码做校验长度
