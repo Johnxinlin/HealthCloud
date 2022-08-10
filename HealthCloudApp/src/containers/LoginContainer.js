@@ -7,15 +7,20 @@ import { pxToDp } from '../utils/stylesKits';
 import validator from '../utils/validator';
 import Toast from 'teaset/components/Toast/Toast';
 import { screenheigth, screenWidth } from '../utils/stylesKits';
+import { useDispatch, useSelector } from 'react-redux';
+import * as UserInfoActions from '../actions/UserInfoActions'
 
 /**
  * @name 登陆页面组件
  */
 const LoginContainer = (props) => {
-  const [mobile, setMobile] = useState(''); // 手机号
+  // const [mobile, setMobile] = useState(''); // 手机号
+  const mobile = useSelector((state) => state.userInfo.phoneNum)
   const [password, setPassword] = useState(''); // 密码
   const [moblieValid, setMobileValid] = useState(true); // 手机格式
   const [passwordValid, setPasswordValid] = useState(true); // 手机格式
+
+  const dispatch = useDispatch();
 
 
   /**
@@ -24,7 +29,8 @@ const LoginContainer = (props) => {
   const login = () => {
     ToastAndroid.showWithGravity('登录成功', 500, ToastAndroid.CENTER);
     props.navigation.navigate('tabs');
-    setMobile('');
+    // setMobile('');
+    dispatch(UserInfoActions.phoneNumState({phoneNum: mobile}));
     setPassword('');
   };
 
@@ -33,7 +39,8 @@ const LoginContainer = (props) => {
    * @param {*} mobile 
    */
   const mobileNumberChangeText = (mobile) =>{
-    setMobile(mobile);
+    // setMobile(mobile);
+    dispatch(UserInfoActions.phoneNumState({phoneNum: mobile}));
     console.log(mobile);
   }
 
@@ -75,7 +82,6 @@ const LoginContainer = (props) => {
           <WelcomeComponent/>
           <View style={styles.bar}>
             <Text style={styles.txt_title}>账号</Text>
-            {/* <TextInput style={styles.txtInput_txt} placeholder="请输入手机号" placeholderTextColor="#999999" maxLength={11} value={mobile} onChangeText={(mobile) => setMobile(mobile)} /> */}
             <Input
                 placeholder="请输入手机号码"
                 maxLength={11}
@@ -92,7 +98,6 @@ const LoginContainer = (props) => {
           {/* 密码输入组件 */}
           <View style={styles.bar}>
             <Text style={styles.txt_title}>密 码</Text>
-            {/* <TextInput style={styles.txtInput_txt} placeholder="请输入密码" placeholderTextColor="#999999" value={password} onChangeText={(password) => setPassword(password)} /> */}
             <Input
                 placeholder="请输入密码"
                 maxLength={16}

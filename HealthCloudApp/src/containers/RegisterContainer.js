@@ -195,24 +195,28 @@ const RegisterContainer = (props) => {
               width: '100%',
               height: '70%',
             }}>
-            <View style={styles.bar}>
-              <Text style={styles.txt_title}>手机号</Text>
-              {/* <TextInput style={styles.txtInput_txt} placeholder="请输入手机号" placeholderTextColor="#999999" maxLength={11} value={mobile} onChangeText={(mobile) => setMobile(mobile)} /> */}
-              <Input
-                placeholder="请输入手机号码"
-                maxLength={11}
-                keyboardType="phone-pad"
-                value={phone}
-                inputStyle={{color: '#333'}} //输入字体的央样式改变
-                onChangeText = {(value) => phoneNumberChangeText(value)}
-                errorMessage={phoneValid ? "" : "手机号格式不正确"}
-                onSubmitEditing={phoneSubmitEditing}
-                style={{width: '100%', marginTop: pxToDp(0, 15)}}
-              />
+
+            <View style={{borderTopWidth: 2,borderLeftWidth:2, borderRightWidth:2, borderColor:"#202d39", borderRadius: 10}}>
+              <View style={styles.bar}>
+                <Text style={styles.txt_title}>手机号</Text>
+                {/* <TextInput style={styles.txtInput_txt} placeholder="请输入手机号" placeholderTextColor="#999999" maxLength={11} value={mobile} onChangeText={(mobile) => setMobile(mobile)} /> */}
+                <Input
+                  placeholder="请输入手机号码"
+                  maxLength={11}
+                  keyboardType="phone-pad"
+                  value={phone}
+                  inputStyle={{color: '#333'}} //输入字体的央样式改变
+                  onChangeText = {(value) => phoneNumberChangeText(value)}
+                  errorMessage={phoneValid ? "" : "手机号格式不正确"}
+                  onSubmitEditing={phoneSubmitEditing}
+                  style={{width: '100%', marginTop: pxToDp(0, 15)}}
+                />
+              </View>
             </View>
 
             {/* 密码输入组件 */}
-            <View style={styles.bar}>
+            <View style={{borderBottomWidth: 2,borderLeftWidth:2, borderRightWidth:2, borderColor:"#202d39", borderRadius: 10}}>
+            <View style={{...styles.bar, marginBottom:pxToDp(0,15)}}>
               <Text style={styles.txt_title}>密 码</Text>
               {/* <TextInput style={styles.txtInput_txt} placeholder="请输入密码" placeholderTextColor="#999999" value={password} onChangeText={(password) => setPassword(password)} /> */}
               <Input
@@ -226,6 +230,7 @@ const RegisterContainer = (props) => {
                 onSubmitEditing={newPasswordSubmitEditing}
                 style={{width: '100%', marginTop: pxToDp(0, 15)}}
               />
+            </View>
             </View>
 
             <View style={styles.bar}>

@@ -6,19 +6,21 @@ import SvgUri from "react-native-svg-uri";
 import { Input } from "react-native-elements";
 import DatePicker from 'react-native-datepicker';
 import THButton from '../components/THButton';
-import {screenWidth, screenheigth} from '../utils/stylesKits'
-import { useLinkProps } from "@react-navigation/native";
-
-
+import {screenWidth, screenheigth} from '../utils/stylesKits';
+import {connect, useDispatch, useSelector } from 'react-redux';
+import * as UserInfoActions from '../actions/UserInfoActions';
 
 function UserInfoPage(props) {
-    const [gender, setGender] = useState('');
+    // const [gender, setGender] = useState('');
+    const gender = useSelector((state) => state.userInfo.gender);
     const [nickname, setNickName] = useState('');
-    const [birthday, setBirthday] = useState('');
+    // const [birthday, setBirthday] = useState('');
+    const birthDay = useSelector((state)=> state.userInfo.birthDay);
     const [email, setEmail] = useState('');
 
     const dateNow = new Date();
     const currentDate = `${dateNow.getFullYear()} + "-" + ${dateNow.getMonth()} + "-" + ${dateNow.getDate()}`;
+    const dispatch = useDispatch();
 
 
     return ( 
@@ -33,11 +35,11 @@ function UserInfoPage(props) {
                 {/** 2.0 性别 开始 */}
                 <View style={styles.inputContainer}>
                     <View style={{width:"60%", alignSelf: "center",justifyContent:"space-around", height:pxToDp(1,30), flexDirection:"row", alignItems:"center"}}>
-                        <TouchableOpacity onPress={()=>{setGender('男');}}  
+                        <TouchableOpacity onPress={()=>{dispatch(UserInfoActions.genderSetState({gender:'男'})); console.log(gender);}}  
                         style={{...styles.sexButton, backgroundColor: gender==='男'?"#858585":"#eee",}}>
                             <SvgUri source={require('../img/svg/male1.svg')} width="60" height="60"/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{setGender('女');}} 
+                        <TouchableOpacity onPress={()=>{dispatch(UserInfoActions.genderSetState({gender:'女'}));}} 
                         style={{...styles.sexButton, backgroundColor: gender==='女'?"#858585":"#eee",}}>
                             <SvgUri source={require('../img/svg/female2.svg')} width="60" height="60"/>
                         </TouchableOpacity>
@@ -64,7 +66,7 @@ function UserInfoPage(props) {
                     <DatePicker
                         androidMode="spinner"
                         style={{width:pxToDp(0,320)}}
-                        date={birthday}
+                        date={birthDay}
                         mode="date"
                         placeholder="设置生日"
                         format="YYYY-MM-DD"
@@ -93,7 +95,7 @@ function UserInfoPage(props) {
                         }
                         // ... You can check the source to find the other keys.
                         }}
-                        onDateChange={(birthday) => {setBirthday(birthday)}}
+                        onDateChange={(val) => {dispatch(UserInfoActions.birthdaySetState({birthDay: val}))}}
                     />
                 </View>
                 {/** 4.0 日期 结束 */}

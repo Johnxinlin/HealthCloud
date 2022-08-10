@@ -3,12 +3,14 @@ import { StyleSheet, View, Text } from 'react-native';
 import AppNavigation from './AppNavigation';
 import { Provider as StoreProvider } from 'react-redux';
 import bluetoothReducers from './reducers/bluetoothReducers';
-import { createStore, applyMiddleware } from 'redux';
+import userInfoReducers from './reducers/userInfoReducers';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/rootSaga';
+import { allReducer } from './reducers/allReducer';
 
 const SagaMiddleware = createSagaMiddleware();
-const store = createStore(bluetoothReducers,  applyMiddleware(SagaMiddleware));
+const store = createStore(allReducer, applyMiddleware(SagaMiddleware));
 SagaMiddleware.run(rootSaga);
 
 const App = () => {
