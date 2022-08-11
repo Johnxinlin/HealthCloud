@@ -1,5 +1,5 @@
 import React from "react";
-import {View,Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View,Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import { useState } from "react";
 import { pxToDp } from "../utils/stylesKits";
 import SvgUri from "react-native-svg-uri";
@@ -37,11 +37,13 @@ function UserInfoPage(props) {
                     <View style={{width:"60%", alignSelf: "center",justifyContent:"space-around", height:pxToDp(1,30), flexDirection:"row", alignItems:"center"}}>
                         <TouchableOpacity onPress={()=>{dispatch(UserInfoActions.genderSetState({gender:'男'})); console.log(gender);}}  
                         style={{...styles.sexButton, backgroundColor: gender==='男'?"#858585":"#eee",}}>
-                            <SvgUri source={require('../img/svg/male1.svg')} width="60" height="60"/>
+                            {/* <SvgUri source={require('../img/svg/male1.svg')} width="60" height="60"/> */}
+                            <Image source={require('../img/男士.png')} style={{width:60, height:60}}></Image>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>{dispatch(UserInfoActions.genderSetState({gender:'女'}));}} 
                         style={{...styles.sexButton, backgroundColor: gender==='女'?"#858585":"#eee",}}>
-                            <SvgUri source={require('../img/svg/female2.svg')} width="60" height="60"/>
+                            {/* <SvgUri source={require('../img/svg/female2.svg')} width="60" height="60"/> */}
+                            <Image source={require('../img/女士.png')} style={{width:60, height:60}}></Image>
                         </TouchableOpacity>
                     </View>
                     <View style={{width:"60%", alignSelf: "center",justifyContent:"space-around", height:pxToDp(1,30), flexDirection:"row", alignItems:"center"}}>

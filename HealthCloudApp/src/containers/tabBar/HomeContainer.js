@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Button, ImageBackground} from 'react-native';
+import {StyleSheet, View, Text, Button, ImageBackground,Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import { pxToDp, screenheigth, screenWidth } from '../../utils/stylesKits';
@@ -13,11 +13,13 @@ const HomeContainer = (props) => {
         <View style={styles.svgBox}>
             <TouchableOpacity onPress={()=>{}}  
             style={styles.buttonStyle}>
-                <SvgUri source={require('../../img/svg/breath.svg')} width="70" height="70"/>
+                {/* <SvgUri source={require('../../img/svg/breath.svg')} width="70" height="70"/> */}
+                <Image source={require('../../img/healthPic/呼吸.png')} style={{width:80, height:80}}></Image>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>{}} 
             style={styles.buttonStyle}>
-                <SvgUri source={require('../../img/svg/temp2.svg')} width="50" height="50"/>
+                {/* <SvgUri source={require('../../img/svg/temp2.svg')} width="50" height="50"/> */}
+                <Image source={require('../../img/healthPic/温度,测温,体温计.png')} style={{width:60, height:60}}></Image>
             </TouchableOpacity>
             {/* <SvgUri source={require('../../img/svg/Home_unfoucs.svg')} width="60" height="60"/> */}
           </View>
@@ -34,11 +36,13 @@ const HomeContainer = (props) => {
         <View style={styles.svgBox}>
             <TouchableOpacity onPress={()=>{}}  
             style={styles.buttonStyle}>
-                <SvgUri source={require('../../img/svg/spo2.svg')} width="70" height="70"/>
+                {/* <SvgUri source={require('../../img/svg/spo2.svg')} width="70" height="70"/> */}
+                <Image source={require('../../img/healthPic/血氧.png')} style={{width:70, height:70}}></Image>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>{}} 
             style={styles.buttonStyle}>
-                <SvgUri source={require('../../img/svg/pres3.svg')} width="50" height="50"/>
+                {/* <SvgUri source={require('../../img/svg/pres3.svg')} width="50" height="50"/> */}
+                <Image source={require('../../img/healthPic/血压.png')} style={{width:70, height:70}}></Image>
             </TouchableOpacity>
           </View>
           <View style={styles.svgBox}>
@@ -54,11 +58,13 @@ const HomeContainer = (props) => {
       <View style={styles.svgBox}>
             <TouchableOpacity onPress={()=>{}}  
             style={styles.buttonStyle}>
-                <SvgUri source={require('../../img/svg/ecg.svg')} width="70" height="70"/>
+                {/* <SvgUri source={require('../../img/svg/ecg.svg')} width="70" height="70"/> */}
+                <Image source={require('../../img/healthPic/心电图.png')} style={{width:60, height:55}}></Image>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>{props.navigation.navigate('login')}} 
             style={styles.buttonStyle}>
-                <SvgUri source={require('../../img/svg/out.svg')} width="50" height="50"/>
+                {/* <SvgUri source={require('../../img/svg/out.svg')} width="50" height="50"/> */}
+                <Image source={require('../../img/healthPic/退出.png')} style={{width:60, height:60}}></Image>
             </TouchableOpacity>
           </View>
           <View style={styles.svgBox}>

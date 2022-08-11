@@ -19,10 +19,10 @@ import { requestLocationPermission } from '../utils/permission';
 const BluetoothConnectComponent = () => {
   // 初始化组件的状态变量
   // const [BTisEnabled, setBTisEnabled] = useState(true); // 蓝牙状态，初始化为true
-  const BTisEnabled = useSelector((state) => state.enabled);
+  const BTisEnabled = useSelector((state) => state.bluetooth.enabled);
   const [BTdiscovering, setBTdiscovering] = useState(false); // 搜索状态
   const [BTisConnected, setBTisConnected] = useState(false); //蓝牙连接状态
-  const BTconnectedDevice = useSelector((state) => state.device); //应用的全局状态：当前连接的蓝牙设备
+  const BTconnectedDevice = useSelector((state) => state.bluetooth.device); //应用的全局状态：当前连接的蓝牙设备
   const [BTsection, setBTsection] = useState(0); // 页码 0-常用设备页 1-新设备页
   const [BTdevices, setBTdevices] = useState([]); //已配对的蓝牙设备列表
   const [BTunpairedDevices, setBTunpairedDevices] = useState([]);

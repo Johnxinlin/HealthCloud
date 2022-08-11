@@ -24,7 +24,8 @@ const Tabs = () => {
         options={{
           tabBarLabel: '个人中心',
           tabBarIcon: ({ focused }) => (
-            <SvgUri source={focused ? require('./img/svg/personnalCenter_focus.svg') : require('./img/svg/personalCenter_unfocus.svg')} width="25" height="25" />
+            // <SvgUri source={focused ? require('./img/healthPic/personnalCenter_focus.svg') : require('./img/healthPic/personalCenter_unfocus.svg')} width="25" height="25" />
+            <Image source={focused ? require('./img/healthPic/personalCenter_focus.png') : require('./img/healthPic/personalCenter_unfocus.png')} style={{width:25, height:25}}></Image>
           ),
         }}
       />
@@ -42,7 +43,8 @@ const Tabs = () => {
             //     height: 25,
             //   }}
             // />
-            <SvgUri source={focused ? require('./img/svg/Home_focus.svg') : require('./img/svg/Home_unfoucs.svg')} width="25" height="25" />
+            // <SvgUri source={focused ? require('./img/healthPic/Home_focus.svg') : require('./img/healthPic/Home_unfoucs.svg')} width="25" height="25" />
+            <Image source={focused ? require('./img/healthPic/Home_focus.png') : require('./img/healthPic/Home_unfocus.png')} style={{width:25, height:25}}></Image>
           ),
         }}
       />
@@ -53,7 +55,8 @@ const Tabs = () => {
         options={{
           tabBarLabel: '蓝牙设备连接',
           tabBarIcon: ({ focused }) => (
-            <SvgUri source={focused ? require('./img/svg/蓝牙_focus.svg') : require('./img/svg/bluetooth_unfocus.svg')} width="25" height="25" />
+            // <SvgUri source={focused ? require('./img/healthPic/蓝牙_focus.svg') : require('./img/healthPic/bluetooth_unfocus.svg')} width="25" height="25" />
+            <Image source={focused ? require('./img/healthPic/bluetooth_focus.png') : require('./img/healthPic/bluetooth_unfocus.png')} style={{width:25, height:25}}></Image>
           ),
         }}
       />
